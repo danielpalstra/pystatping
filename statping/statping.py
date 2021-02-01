@@ -13,6 +13,7 @@ import statping.checkins as checkins
 import statping.theme as theme
 import statping.oauth as oauth
 
+
 class Statping(object):
     def __init__(self, url, **kwargs):
         self.connection = connection.StatpingConnection(url, **kwargs)

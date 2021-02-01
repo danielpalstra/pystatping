@@ -10,6 +10,7 @@ STATPING_URL = os.getenv("STATPING_URL", "http://localhost:8088")
 STATPING_TOKEN = os.getenv("STATPING_TOKEN", None)
 STATPING_SERVICES_FILE = os.getenv("STATPING_SERVICES_FILE", "services.yml")
 
+
 def load_services(path):
     """Loads statping services from a Yaml file. The format is equal to the bulk input.
 
@@ -28,12 +29,14 @@ def load_services(path):
         for service in services:
             yield service
 
+
 @pytest.fixture
 def statping():
     return Statping(
         STATPING_URL,
         token=STATPING_TOKEN,
     )
+
 
 @pytest.fixture
 def service():
@@ -68,6 +71,7 @@ def test_ruamel():
         yaml.dump(services, sys.stdout)
 
         print(yaml)
+
 
 @pytest.mark.skip()
 def test_create_service(service, statping):

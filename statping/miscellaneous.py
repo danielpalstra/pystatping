@@ -1,5 +1,6 @@
 from . import exceptions
 
+
 class Miscellaneous(object):
     def __init__(self, connection):
 
