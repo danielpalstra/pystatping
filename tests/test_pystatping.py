@@ -6,7 +6,7 @@ from ruamel.yaml import YAML
 
 from statping import Statping
 
-STATPING_URL = os.getenv("STATPING_URL", "http://localhost:8088")
+STATPING_URL = os.getenv("STATPING_URL", "http://localhost:8080")
 STATPING_TOKEN = os.getenv("STATPING_TOKEN", None)
 STATPING_SERVICES_FILE = os.getenv("STATPING_SERVICES_FILE", "services.yml")
 
@@ -114,3 +114,20 @@ def test_delete_service(service, statping):
 def test_get_details(statping):
 
     assert type(statping.miscellaneous.get_details()) == dict
+
+
+def test_create_group(statping):
+
+    group = statping.groups.create_group({"name": "OpenStack Cloud", "public": True})
+    print(group)
+
+
+def test_get_all_groups(statping):
+
+    groups = statping.groups.get_all_groups()
+    print(groups)
+
+
+def test_get_all_messages(statping):
+
+    messages = statping.messages.get_all_messages()

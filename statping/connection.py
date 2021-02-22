@@ -48,6 +48,7 @@ class StatpingConnection(object):
         url = f"{self.base_url}/api/{path}"
         resp_ok, resp_status, resp_data = self.__request(url=url, method="DELETE")
 
+        # TODO: Check more than http 200 and return more than true
         if resp_ok and resp_status == 200:
             return True
 
@@ -67,6 +68,11 @@ class StatpingConnection(object):
         resp_ok, resp_status, resp_data = self.__request(
             url=url, method="POST", body=body
         )
+
+        if resp_status == 401:
+            raise exceptions.AuthException(
+                f"The API token is invalid. API error message: {resp_data['error']}."
+            )
 
         return resp_data
 

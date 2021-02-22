@@ -16,11 +16,13 @@ pystatping
 
 
 
-Statping API client library
+Statping API client library. Built on top of ApiDocs_
 
 
 * Free software: Apache Software License 2.0
 * Documentation: https://pystatping.readthedocs.io.
+
+
 
 
 Features
@@ -35,3 +37,4 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. _ApiDocs: https://documenter.getpostman.com/view/1898229/SzmfXwi4

@@ -26,6 +26,5 @@ jobs:
 
       - name: Run Linter
         run: black --diff --check statping tests
-
       # - name: Run Tests
       #   run: pytest
