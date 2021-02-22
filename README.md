@@ -11,6 +11,20 @@ Statping API client library. Built on top of [ApiDocs][]
 -   Free software: Apache Software License 2.0
 -   Documentation: <https://pystatping.readthedocs.io>.
 
+## Release
+
+Start a new release
+
+```shell
+bump2version patch|minor|major
+```
+
+Finish release
+
+```shell
+bump2version --tag release
+```
+
 ## Features
 
 -   TODO

@@ -8,24 +8,8 @@ from ruamel.yaml import YAML
 
 from statping import Statping
 
-STATPING_URL = os.getenv("STATPING_URL", "http://localhost:8080")
-STATPING_TOKEN = os.getenv("STATPING_TOKEN", None)
-STATPING_SERVICES_FILE = os.getenv("STATPING_SERVICES_FILE", "services.yml")
-
-
-@pytest.fixture
-def statping():
-    return Statping(
-        STATPING_URL,
-        token=STATPING_TOKEN,
-    )
-
-
 @pytest.fixture
 def message():
-
-    # end_on = (datetime.datetime.today() + datetime.timedelta(days=1)).isoformat()
-
     return {
         "description": "Several issues",
         "end_on": pytz.utc.localize(
@@ -57,8 +41,3 @@ def test_delete_message(statping, message):
     response = statping.messages.delete_message(msg["id"])
     # Assert response is true
     assert response
-
-
-# def test_update_message(message, statping):
-
-# message = statping.services.update_service(12, service)
