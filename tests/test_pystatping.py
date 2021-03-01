@@ -45,6 +45,12 @@ def test_delete_service(service, statping):
 
     statping.services.delete_service(service_id)
 
+def test_get_service_failures(statping):
+
+    failures = statping.services.get_service_failures(1)
+
+    # Check for non empty list
+    assert failures["failures"]
 
 def test_get_details(statping):
 

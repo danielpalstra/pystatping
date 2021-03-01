@@ -1,3 +1,7 @@
+import datetime
+
+import pytz
+
 from . import exceptions
 
 
@@ -96,4 +100,27 @@ class Services:
         """
 
         response = self.connection.delete(f"services/{service_id}")
+        return response
+
+    def get_service_failures(self, service_id, start=None, end=None):
+        """Get service failures. Get from the last 60 days by default
+
+        Args:
+            service_id (int): Service ID to get the failures for
+            start (int, optional): Unix timestamp for start date. Defaults to None.
+            end (int, optional): Unix timestamp for end date. Defaults to None.
+
+        Returns:
+            dict: Service description and failures
+        """
+
+        if not start:
+            start = int(
+                (datetime.datetime.utcnow() - datetime.timedelta(days=60)).timestamp()
+            )
+
+        if not end:
+            end = int(datetime.datetime.utcnow().timestamp())
+
+        response = self.connection.get(f"services/{service_id}?start={start}&end={end}")
         return response
